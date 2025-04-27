@@ -1,0 +1,54 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+                "CMAKE_CXX_STANDARD": "17",
+                "CMAKE_CXX_STANDARD_REQUIRED": "YES",
+                "CMAKE_C_COMPILER": "C:/MyPrograms/Perl/c/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/MyPrograms/Perl/c/bin/g++.exe"
+            }
+        },
+        {
+            "name": "debug",
+            "inherits": "default",
+            "description": "Debug build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "inherits": "default",
+            "description": "Release build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build-debug",
+            "configurePreset": "debug",
+            "description": "Build Debug",
+            "jobs": 4
+        },
+        {
+            "name": "build-release",
+            "configurePreset": "release",
+            "description": "Build Release",
+            "jobs": 4
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "run-tests",
+            "configurePreset": "debug"
+        }
+    ]
+}
